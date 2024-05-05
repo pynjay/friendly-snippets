@@ -62,7 +62,7 @@
         "description": "Paramater documentation"
     },
     "function …": {
-        "prefix": "fun",
+        "prefix": ["fun", "meth"],
         "body": [
             "${1:public }function ${2:FunctionName}(${3:${4:${5:Type} }\\$${6:var}${7: = ${8:null}}}) {",
             "\t${0:# code...}",
@@ -157,16 +157,6 @@
         ],
         "description": "Foreach loop"
     },
-    "$… = array (…)": {
-        "prefix": "array",
-        "body": "\\$${1:arrayName} = array('$2' => $3${4:,} $0);",
-        "description": "Array initializer"
-    },
-    "$… = […]": {
-        "prefix": "shorray",
-        "body": "\\$${1:arrayName} = ['$2' => $3${4:,} $0];",
-        "description": "Array initializer"
-    },
     "… => …": {
         "prefix": "keyval",
         "body": "'$1' => $2${3:,} $0",
@@ -220,13 +210,28 @@
         "body": ["#endregion"],
         "description": "Folding Region End"
     },
+    "Sprintf": {
+        "prefix": "spr",
+        "body": "sprintf('${1:text}%${2:s}', ${3:var})",
+        "description": "Folding Region End"
+    },
+    "Log Info": {
+        "prefix": "info",
+        "body": "$$this->logger->info('$1');",
+        "description": "Logging info via logger"
+    },
+    "Log Error": {
+        "prefix": "err",
+        "body": "$$this->logger->error('$1');",
+        "description": "Logging error via logger"
+    },
     "Try Catch Block": {
         "prefix": "try",
         "body": [
             "try {",
             "\t${1://code...}",
-            "} catch (${2:\\Throwable} ${3:\\$th}) {",
-            "\t${4://throw \\$th;}",
+            "} catch (${2:\\Throwable} ${3:\\$exception}) {",
+            "\t${4://throw \\$exception;}",
             "}"
         ],
         "description": "Try catch block"
